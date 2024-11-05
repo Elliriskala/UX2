@@ -1,0 +1,82 @@
+.topnav {
+  list-style-type: none;
+  margin: 0 0 20px;
+  padding: 14px;
+  overflow: hidden;
+  background-color: #3c1b5b;
+}
+.topnav li.right {
+  float: right;
+}
+.topnav li {
+  float: left;
+}
+.topnav li span {
+  color: #6d39a1;
+}
+.topnav li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 20px;
+  border-radius: 1em;
+}
+.topnav li a:hover:not(.active) {
+  background-color: #6d39a1;
+  padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
+}
+body {
+  margin: 0;
+  font: 100% Helvetica, sans-serif;
+  background-color: #b28dca;
+}
+
+img, .box {
+  padding: 20px;
+  background-color: #6d39a1;
+  border: 2px solid #3c1b5b;
+  border-radius: 5px;
+  margin: 2em 0 2em 0;
+}
+
+/* use a mixing for centering */
+/* https://css-tricks.com/snippets/sass/centering-mixin/ */
+/* Mixins normally set many properties */
+.center {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.content {
+  padding: 0 16px;
+  width: 80%;
+  text-align: initial;
+}
+
+.text-content {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: left;
+  background-color: #b28dca;
+  border: 0.5em solid #3c1b5b;
+  padding: 16px;
+  border-radius: 1em;
+  width: 60%;
+}
+
+.box {
+  width: 60%;
+}
+
+/*# sourceMappingURL=output.css.map */

@@ -1,0 +1,58 @@
+@import "base";
+@import "navigation";
+
+body {
+  margin: 0;
+  font: 100% Helvetica, sans-serif;
+  background-color: $light-purple-color;
+}
+
+// @extend
+
+%shared-elements {
+  padding: $padding-20;
+  background-color: $purple-color;
+  border: 2px solid $dark-purple-color;
+  border-radius: 5px;
+  margin: 2em 0 2em 0;
+}
+
+/* use a mixing for centering */
+/* https://css-tricks.com/snippets/sass/centering-mixin/ */
+
+/* Mixins normally set many properties */
+
+@mixin center($text-align) {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: $text-align;
+}
+
+.center {
+  @include center(center);
+}
+
+.content {
+  padding: $padding-0 $padding-16;
+  width: 80%;
+  text-align: initial;
+}
+
+.text-content {
+  @include center(left);
+  background-color: $light-purple-color;
+  border: 0.5em solid $dark-purple-color;
+  padding: $padding-16;
+  border-radius: 1em;
+  width: 60%;
+}
+
+.box {
+  @extend %shared-elements;
+  width: 60%;
+}
+
+img {
+  @extend %shared-elements;
+}

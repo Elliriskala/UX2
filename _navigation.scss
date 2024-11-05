@@ -1,0 +1,43 @@
+@import "base";
+
+// nesting the navigation 
+
+.topnav {
+  list-style-type: none;
+  margin: 0 0 20px;
+  padding: $padding-14;
+  overflow: hidden;
+  background-color: $dark-purple-color;
+  
+  li.right {
+    float: right;
+  }
+
+  li {
+    float: left;
+    span {
+      color: $purple-color;
+    }
+
+    a {
+      display: block;
+      color: $white-color;
+      text-align: center;
+      text-decoration: none;
+      padding: $padding-20;
+      border-radius: 1em;
+
+      &:hover:not(.active) {
+        background-color: $purple-color;
+        padding: $padding-20;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
+}
