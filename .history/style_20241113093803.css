@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: rgb(214, 111, 8);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: black;
+    z-index: 1000;
+    padding: 2em;
+    text-align: center;
+}
+
+.hero {
+    background-image: url(sunsetview.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+}
+
+main {
+    background-color: rgb(190, 66, 34);
+    padding: 2em;
+}
+

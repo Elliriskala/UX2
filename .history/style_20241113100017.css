@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: rgb(235, 122, 29);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: black;
+  z-index: 10;
+  padding: 1em 0 1em 0;
+  display: flex;
+  justify-content: center;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  background-image: url(sunsetview.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+}
+
+main, section {
+  background-color: rgb(6, 15, 3);
+  padding: 2em;
+  color: wheat;
+}
+
+section {
+    background-color: #0071a3;
+}
+
+.content h2 {
+    text-align: center;
+    margin: 0 0 1em 0;
+}
+
+.scroll-image {
+    background-image: url(waterfall.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+
+footer {
+  background-color: rgb(235, 122, 29);
+  padding: 1em 0 1em 0;
+  text-align: center;
+}

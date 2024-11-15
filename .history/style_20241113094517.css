@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: rgb(235, 122, 29);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: black;
+  z-index: 1000;
+  padding: 1em 0 1em 0;
+  display: flex;
+  justify-content: center;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  background-image: url(sunsetview.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+}
+
+main {
+  background-color: rgb(12, 30, 8);
+  padding: 1em;
+}

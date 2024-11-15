@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parallax demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Parallax demo</h1>
+    </header>
+    <div class="hero">
+      <div class="layer layer1" data-type="parallax" data-speed="2"></div>
+      <div class="layer layer2" data-type="parallax" data-speed="15"></div>
+      <div class="layer layer3" data-type="parallax" data-speed="40"></div>
+      <div class="layer layer4" data-type="parallax" data-speed="50"></div>
+      <div class="layer layer5" data-type="parallax" data-speed="60"></div>
+    </div>
+    <main>
+      <div class="content">
+        <h2>My cool parallax page</h2>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem officia
+          assumenda animi, tempora maxime velit amet iure rerum sunt repudiandae
+          perferendis dicta earum illum recusandae quo ipsa autem maiores quod.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit commodi
+          suscipit ducimus cum accusamus! Accusantium voluptatem dolorem amet
+          dolor iste iusto, consequatur nostrum totam quia, aliquam maiores? At,
+          sit impedit! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Corporis ut, veritatis voluptatum nemo vitae earum quaerat inventore,
+          omnis ipsa suscipit cum velit in voluptas, error a non laborum.
+          Architecto, repellendus. Lorem ipsum dolor, sit amet consectetur
+          adipisicing elit. Non iusto doloremque culpa dolorum nemo numquam et
+          quod accusamus perferendis veniam incidunt quae, similique magnam
+          reiciendis reprehenderit officia id veritatis placeat!
+        </p>
+      </div>
+    </main>
+    <div id="spacecat">
+      <div class="layer-1"></div>
+      <div class="layer-2"></div>
+      <div id="mouse"></div>
+      <div id="mouse-center"></div>
+    </div>
+    <section>
+      <div class="content">
+        <h2>More content</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
+          consequatur quod consequuntur? Est aliquam provident assumenda.
+          Quibusdam impedit ullam iusto expedita quas, explicabo pariatur! Est
+          voluptatem voluptate saepe laborum a. Lorem ipsum dolor sit amet
+          consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Earum, voluptatem atque? Corporis rerum optio
+          corrupti blanditiis? Ut assumenda voluptatum ad, cumque nobis itaque
+          sed ratione, modi quasi in aspernatur libero? Lorem ipsum dolor sit
+          amet consectetur, adipisicing elit. Cumque, totam numquam! Doloremque
+        </p>
+      </div>
+    </section>
+    <div class="scroll-image" id="img2">
+      <div class="layer layer6" data-type="down-parallax" data-speed="100"></div>
+    </div>
+    <section class="section2">
+      <div class="content">
+        <h2>More content</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
+          consequatur quod consequuntur? Est aliquam provident assumenda.
+          Quibusdam impedit ullam iusto expedita quas, explicabo pariatur! Est
+          voluptatem voluptate saepe laborum a. Lorem ipsum dolor sit amet
+          consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Earum, voluptatem atque? Corporis rerum optio
+          corrupti blanditiis? Ut assumenda voluptatum ad, cumque nobis itaque
+          sed ratione, modi quasi in aspernatur libero? Lorem ipsum dolor sit
+          amet consectetur, adipisicing elit. Cumque, totam numquam! Doloremque
+          amet est nisi, dolorum velit similique, vitae itaque neque temporibus
+          impedit eligendi praesentium eveniet dicta minima quam ab.
+        </p>
+      </div>
+    </section>
+    <div class="scroll-image" id="img3">
+      <div class="content text">
+        <h3>Thank you for viewing my parallax demo!</h3>
+      </div>
+    </div>
+    <footer>
+      <div class="content">
+        <h3>Parallax</h3>
+      </div>
+    </footer>
+    <script>
+      const spacecat = document.getElementById("spacecat");
+      const mouse = document.getElementById("mouse");
+      const mouseCenter = document.getElementById("mouse-center");
+      const layer1 = document.querySelector(".layer-1");
+      const layer2 = document.querySelector(".layer-2");
+
+      document.addEventListener("mousemove", (event) => {
+        // window center
+        let centerX = window.innerWidth / 2;
+        let centerY = window.innerHeight / 2;
+
+        let clientX = event.clientX;
+        let clientY = event.clientY;
+        let mouseLoc = `Yläkulmasta ${clientX}px, ${clientY}px`;
+        // mouse.innerHTML = mouseLoc;
+
+        let mouseCenterX = centerX - clientX;
+        let mouseCenterY = centerY - clientY;
+
+        let mouseCenterLoc = `Keskeltä ${mouseCenterX}px, ${mouseCenterY}px`;
+        // mouseCenter.innerHTML = mouseCenterLoc;
+
+        layer1.style.transform =
+          "translateX(" +
+          mouseCenterX / 100 +
+          "%) translateY(" +
+          mouseCenterY / 100 +
+          "%)";
+        layer2.style.transform =
+          "translateX(" +
+          mouseCenterX / 250 +
+          "%) translateY(" +
+          mouseCenterY / 250 +
+          "%)";
+      });
+
+      window.addEventListener("scroll", function (event) {
+        var winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        var height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+      });
+
+      window.addEventListener("scroll", function () {
+        var top = window.scrollY;
+
+        var layers = document.querySelectorAll("[data-type]");
+        const layer6 = document.querySelector(".layer6");
+
+        layers.forEach((layer) => {
+          var speed = layer.getAttribute("data-speed");
+          var type = layer.getAttribute("data-type");
+          var yPos;
+
+          if (type === "down-parallax") {
+            layer6.style.left = top * 0.2 + "px";
+          } else {
+            yPos = -((top * speed) / 100);
+          }
+
+          layer.style.transform = `translate3d(0px, ${yPos}px, 0px`;
+        });
+      });
+    </script>
+  </body>
+</html>

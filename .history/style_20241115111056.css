@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+  letter-spacing: 1.5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(53, 52, 54);
+  overflow-x: hidden;
+}
+
+header {
+  background-color: #933853;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: black;
+  z-index: 15;
+  padding: 1.5em 0 1.5em 0;
+  display: flex;
+  justify-content: center;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+#spacecat {
+  width: 100%;
+  height: 90vh;
+  background-image: url(sunsetview.jpg);
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+
+.layer-1 {
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  left: 30%;
+  bottom: 250px;
+  background-image: url(./layer6.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.layer-2 {
+  width: 250px;
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  background-image: url(./layer7.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero {
+  height: 90vh;
+  position: relative;
+  z-index: 0;
+}
+
+.layer {
+  height: inherit;
+  width: 100%;
+  position: fixed;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
+.layer1 {
+  background-image: url(layer1.png);
+}
+
+.layer2 {
+  background-image: url(layer2.png);
+  background-position: top 100px left 20px;
+}
+
+.layer3 {
+  background-image: url(layer3.png);
+  background-position: bottom;
+}
+
+.layer4 {
+  background-image: url(layer4.png);
+  background-position: center right;
+}
+
+.layer5 {
+  background-image: url(layer5.png);
+  background-position: bottom 60px left 100px;
+}
+
+main,
+section {
+  background-color: #fe8400;
+  padding: 2em;
+  color: rgb(23, 3, 40);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+section {
+  background-color: rgb(6, 15, 3);
+  color: wheat;
+}
+
+.section2 {
+  background-color: rgb(75, 139, 164);
+  color: rgb(23, 3, 40);
+}
+
+.content h2 {
+  text-align: center;
+  margin: 0 0 1em 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding: 0;
+  margin: 0;
+}
+
+.layer6 {
+  background-image: url(layer6.png);
+  background-position: bottom 300px left -300px;
+  max-width: 400px;
+  position: relative;
+  z-index: 15;
+}
+
+.scroll-image {
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 5;
+}
+
+#img1 {
+  background-image: url(sunsetview.jpg);
+}
+
+#img2 {
+  background-image: url(waterfall.jpg);
+}
+
+#img3 {
+  background-image: url(sunset+waterfall.jpg);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: #810e31cb;
+  text-align: center;
+  color: wheat;
+  position: relative;
+  z-index: 10;
+}
