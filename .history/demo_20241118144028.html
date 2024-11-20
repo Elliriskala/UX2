@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonic runs</title>
+  </head>
+  <style>
+    html,
+    body {
+      min-height: 100vh;
+      font-family: "Press Start 2P", cursive;
+      margin: 0;
+    }
+
+    main {
+      width: 800px;
+      margin: auto;
+    }
+
+    .stage {
+      width: 800px;
+      height: 481px;
+      background-image: url("stage.png");
+      background-size: contain;
+      position: relative;
+    }
+
+    .sonic {
+      width: 140px;
+      height: 110px;
+      position: absolute;
+      left: 70px;
+      bottom: 30px;
+      background-image: url("sonic2.png");
+      background-position: 0 0;
+
+      animation-name: dogwalks;
+      animation-duration: 1s;
+      /*animation-delay: 2s;*/
+      animation-iteration-count: infinite;
+      animation-timing-function: steps(3);
+    }
+
+    @keyframes dogmove {
+      from {
+        left: 0px;
+      }
+
+      to {
+        left: 300px;
+      }
+    }
+
+    @keyframes dogwalks {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: -600px 0;
+      }
+    }
+  </style>
+  <body>
+    <main>
+      <h1>Duckhunt</h1>
+      <p>Tietoa duckhunt pelistä</p>
+      <div class="stage">
+        <div class="sonic"></div>
+        <div class="duck">Ankka</div>
+      </div>
+    </main>
+  </body>
+</html>

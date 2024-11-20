@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Duckhunt</title>
+  </head>
+  <style>
+    html,
+    body {
+      min-height: 100vh;
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+    }
+
+    main {
+      width: 800px;
+      margin: auto;
+    }
+
+    #output {
+      padding: 1em;
+    }
+
+    .stage {
+      width: 800px;
+      height: 481px;
+      background-image: url("stage.png");
+      background-size: contain;
+      position: relative;
+    }
+
+    .dog {
+      width: 120px;
+      height: 110px;
+      position: absolute;
+      left: 70px;
+      bottom: 30px;
+      background-image: url("sprite.png");
+      background-position: 0 0;
+
+      /*
+      animation-name: dogwalks;
+      animation-duration: 0.5s;
+      animation-delay: 2s;
+      animation-iteration-count: 3;
+      animation-timing-function: steps(5);
+      */
+
+      animation: dogwalks 0.5s steps(5) 6, dogmove 3s linear forwards,
+        dogsniff 1s steps(2) 3s 3;
+    }
+
+    .duck {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      background-image: url("sprite.png");
+      background-repeat: no-repeat;
+      background-position: 10px -220px;
+    }
+
+    .duck-fly {
+      animation: duckfly 1.5s steps(3) 6;
+    }
+
+    @keyframes dogmove {
+      from {
+        left: 0px;
+      }
+
+      to {
+        left: 300px;
+      }
+    }
+
+    @keyframes dogwalks {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: -600px 0;
+      }
+    }
+
+    @keyframes dogsniff {
+      from {
+        background-position: -360px 0;
+      }
+
+      to {
+        background-position: -600px 0;
+      }
+    }
+
+    @keyframes duckfly {
+      from {
+        background-position: 10px -220px;
+        left: 60px;
+      }
+
+      20% {
+        background-position: 10px -230px;
+        left: 100px;
+      }
+
+      40% {
+        background-position: 0 -220px;
+        left: 200px;
+      }
+
+      60% {
+        left: 400px;
+      }
+
+      80% {
+        left: 600px;
+      }
+
+
+      to {
+        background-position: -230px -210px;
+        left: 750px;
+      }
+    }
+  </style>
+  <body>
+    <main>
+      <h1>Duckhunt</h1>
+      <p>Tietoa duckhunt pelistä</p>
+      <div class="stage">
+        <div class="dog"></div>
+        <div class="duck duck-fly"></div>
+      </div>
+      <div id="output"></div>
+    </main>
+    <script>
+      let dog = document.querySelector(".dog");
+
+      dog.addEventListener("animationstart", listener, false);
+      dog.addEventListener("animationend", listener, false);
+      dog.addEventListener("animationiteration", listener, false);
+
+      function listener(event) {
+        const l = document.createElement("li");
+        switch (event.type) {
+          case "animationstart":
+            l.textContent = `${event.animationName} started: elapsed time is ${event.elapsedTime}`;
+            break;
+          case "animationend":
+            l.textContent = `${event.animationName} ended: elapsed time is ${event.elapsedTime}`;
+            break;
+          case "animationiteration":
+            l.textContent = `${event.animationName} new loop started at time ${event.elapsedTime}`;
+            break;
+        }
+        document.getElementById("output").appendChild(l);
+      }
+    </script>
+  </body>
+</html>

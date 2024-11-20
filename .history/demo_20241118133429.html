@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DuckHunt</title>
+  </head>
+  <style>
+    html,
+    body {
+      min-height: 100vh;
+      font-family: "Press Start 2P", cursive;
+      margin: 0;
+    }
+
+    main {
+      width: 800px;
+      margin: auto;
+    }
+
+    .stage {
+      width: 800px;
+      height: 481px;
+      background-image: url("stage.png");
+      background-size: contain;
+      position: relative;
+    }
+
+    .dog {
+      width: 120px;
+      height: 110px;
+      background-color: antiquewhite;
+      position: absolute;
+      left: 70px;
+      bottom: 30px;
+      background-image: url("sprite.png");
+    }
+  </style>
+  <body>
+    <main>
+      <h1>Duckhunt</h1>
+      <p>Tietoa duckhunt pelistä</p>
+      <div class="stage">
+        <div class="dog"></div>
+        <div class="duck">Ankka</div>
+      </div>
+    </main>
+  </body>
+</html>

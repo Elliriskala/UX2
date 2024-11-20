@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Duckhunt</title>
+  </head>
+  <style>
+    html,
+    body {
+      min-height: 100vh;
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+      background-color: rgb(56, 15, 95);
+      overflow: hidden;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .header h1 {
+      font-size: 2em;
+      color: rgb(199, 61, 185);
+    }
+
+    .header p {
+      font-size: 1.2em;
+      color: rgb(199, 61, 185);
+    }
+
+    .stage {
+      margin: 0 auto;
+      width: 80vw;
+      height: 80vh;
+      background-image: url("stage.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      border-radius: 3em;
+      border: 2px solid rgb(199, 61, 185);
+    }
+
+    .dog {
+      width: 120px;
+      height: 110px;
+      position: absolute;
+      left: 70px;
+      bottom: 30px;
+      background-image: url("sprite.png");
+      background-position: 0 0;
+
+      /*
+      animation-name: dogwalks;
+      animation-duration: 0.5s;
+      animation-delay: 2s;
+      animation-iteration-count: 3;
+      animation-timing-function: steps(5);
+      */
+
+      animation: dogwalks 0.5s steps(5) 6, dogmove 3s linear forwards,
+        dogsniff 1s steps(2) 3s 3, dogSmellsDuck 1s steps(1) 6s,
+        dogJumps 0.5s steps(1) 7s, dogJumps2 0.5s steps(1) 7.5s,
+        dogFindsDuck 2s steps(1) 8s infinite;
+    }
+
+    .duck,
+    .duck2 {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      background-image: url("sprite.png");
+      background-repeat: no-repeat;
+    }
+
+    .duck {
+      top: 10vh;
+      left: 0vw;
+      background-position: 0 -220px;
+      animation: duckfly 1.5s steps(3) infinite;
+    }
+
+    .duck2 {
+      top: 30vh;
+      left: 10vw;
+      background-position: -260px -300px;
+      animation: duck2fly 1.5s steps(3) infinite;
+    }
+
+    @keyframes dogmove {
+      from {
+        left: 5vw;
+        bottom: 2vw;
+      }
+
+      to {
+        left: 37vw;
+        bottom: 11vh;
+      }
+    }
+
+    @keyframes dogwalks {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: -600px 0;
+      }
+    }
+
+    @keyframes dogsniff {
+      from {
+        background-position: -360px 0;
+      }
+
+      to {
+        background-position: -600px 0;
+      }
+    }
+
+    @keyframes dogSmellsDuck {
+      from {
+        background-position: 0 -110px;
+      }
+
+      to {
+        background-position: 0 -110px;
+      }
+    }
+
+    @keyframes dogJumps {
+      from {
+        background-position: -120px -110px;
+        left: 40vw;
+        bottom: 15vh;
+      }
+
+      to {
+        background-position: -120px -110px;
+      }
+    }
+
+    @keyframes dogJumps2 {
+      from {
+        background-position: -240px -110px;
+        left: 40vw;
+        bottom: 17vh;
+      }
+
+      to {
+        background-position: -240px -110px;
+      }
+    }
+
+    @keyframes dogFindsDuck {
+      from {
+        background-position: -640px -120px;
+        bottom: 18vh;
+        left: 42vw;
+      }
+
+      to {
+        background-position: -720px 120px;
+      }
+    }
+
+    @keyframes duckfly {
+      0% {
+        left: 0;
+        top: 10vh;
+        background-position: 0 -220px;
+      }
+
+      25% {
+        left: 20vw;
+        top: 0vh;
+        background-position: -100px -220px;
+      }
+
+      50% {
+        left: 50vw;
+        top: 15vh;
+        background-position: 0 -220px;
+      }
+
+      75% {
+        left: 80vw;
+        top: 5vh;
+      }
+
+      100% {
+        left: 100vw;
+        top: 20vh;
+        background-position: 0 -220px;
+      }
+    }
+
+    @keyframes duck2fly {
+      0% {
+        transform: translate(0, 0);
+        background-position: -260px -300px;
+      }
+
+      25% {
+        transform: translate(-20vw, -10vh);
+      }
+
+      50% {
+        transform: translate(-40vw, 0);
+        background-position: -320px -300px;
+      }
+
+      75% {
+        transform: translate(-60vw, -10vh);
+      }
+
+      100% {
+        transform: translate(-100vw, 0);
+        background-position: -400px -300px;
+      }
+    }
+  </style>
+  <body>
+    <main>
+      <div class="header">
+        <h1>DUCKHUNT GAME</h1>
+        <p>In this game the dog catches the ducks</p>
+      </div>
+      <div class="stage">
+        <div class="dog"></div>
+        <div class="duck"></div>
+        <div class="duck2"></div>
+      </div>
+      <div id="output"></div>
+    </main>
+    <script>
+      let dog = document.querySelector(".dog");
+
+      dog.addEventListener("animationstart", listener, false);
+      dog.addEventListener("animationend", listener, false);
+      dog.addEventListener("animationiteration", listener, false);
+      /*
+      function listener(event) {
+        const l = document.createElement("li");
+        switch (event.type) {
+          case "animationstart":
+            l.textContent = `${event.animationName} started: elapsed time is ${event.elapsedTime}`;
+            break;
+          case "animationend":
+            l.textContent = `${event.animationName} ended: elapsed time is ${event.elapsedTime}`;
+            break;
+          case "animationiteration":
+            l.textContent = `${event.animationName} new loop started at time ${event.elapsedTime}`;
+            break;
+        }
+        document.getElementById("output").appendChild(l);
+      }
+        */
+    </script>
+  </body>
+</html>

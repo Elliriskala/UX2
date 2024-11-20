@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D demo</title>
+    <style>
+      body {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .scene {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        margin: 50px auto;
+        perspective: 600px;
+      }
+
+      .face {
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+        transform: rotateZ(45deg) rotateY(40deg);
+        transition: all 0.5s;
+        /*backface-visibility: hidden;*/
+      }
+
+      .face:hover {
+        scale: 1.1;
+        transform: rotateZ(60deg) rotateY(50deg) rotateX(30deg);
+      }
+
+      .fs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: whitesmoke;
+        font-size: xx-large;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>CSS 3D intro</h2>
+    <div class="scene">
+      <div class="face fs">etuosa</div>
+    </div>
+
+    <h2>Kortti, klikkaa ja käännä, käyttää transiota</h2>
+
+    <style>
+        .card {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-front {
+            background-color: chocolate;
+            width: inherit;
+            height: inherit;
+        }
+
+        .card-back {
+            background-color: darkgreen;
+            width: inherit;
+            height: inherit;
+        }
+
+    </style>
+
+    <div class="scene">
+      <div class="card">
+        <div class="fs card-front">etuosa</div>
+        <div class="fs card-back">takaosa</div>
+      </div>
+  </body>
+</html>
