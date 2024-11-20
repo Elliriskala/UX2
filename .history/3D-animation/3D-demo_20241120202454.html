@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D demo</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three/examples/jsm/"
+          }
+        }
+      </script>
+    <style>
+      body {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .scene {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        margin: 50px auto;
+        perspective: 600px;
+        border-radius: 2em;
+      }
+
+      .face {
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+        transform: rotateZ(45deg) rotateY(40deg);
+        transition: all 0.5s;
+        /*backface-visibility: hidden;*/
+      }
+
+      .face:hover {
+        scale: 1.1;
+        transform: rotateZ(60deg) rotateY(50deg) rotateX(30deg);
+      }
+
+      .fs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: whitesmoke;
+        font-size: xx-large;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>CSS 3D intro</h2>
+    <div class="scene">
+      <div class="face fs">etuosa</div>
+    </div>
+
+    <h2>Kortti, klikkaa ja käännä, käyttää transiota</h2>
+
+    <style>
+      .card {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+      }
+
+      .card:horver {
+        cursor: pointer;
+      }
+
+      .card-front {
+        background-color: coral;
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        color: black;
+        border-radius: 1em;
+      }
+
+      .card-flipped {
+        transform: rotateY(180deg);
+      }
+
+      .card-back {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        transform: rotateY(180deg);
+        background-image: url(./Kawaii\ Sushi\ Sticker.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: black;
+        border-radius: 1em;
+      }
+    </style>
+
+    <div class="scene">
+      <div class="card">
+        <div class="fs card card-front">CLICK ME!</div>
+        <div class="fs card card-back"></div>
+      </div>
+    </div>
+
+    <div>
+      <h2>CSS animoitu kuutio</h2>
+
+      <style>
+        body {
+          margin-bottom: 200px;
+        }
+
+        .scene2 {
+          width: 100%;
+          height: 200px;
+          perspective: 600px;
+          border: 1px solid black;
+          margin: 50px auto;
+          position: relative;
+          background-image: url(./drinks.jpg);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .cube {
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          left: calc(50% - 100px);
+          transform-style: preserve-3d;
+          animation: rotatecube 20s linear infinite;
+        }
+
+        @keyframes rotatecube {
+          0% {
+            transform: rotateY(0deg) rotateX(0deg);
+          }
+          100% {
+            transform: rotateY(360deg) rotateX(-100deg);
+          }
+        }
+        .cube-face {
+          position: absolute;
+          width: 200px;
+          height: 200px;
+        }
+
+        .cube-face-front {
+            background-color: rgba(255, 0, 0, 0.572);
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        
+        .cube-face-back {
+            background-color: rgba(0, 128, 0, 0.5);
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        
+        .cube-face-left {
+          background-image: url(./popo.jpg);
+          background-size: cover;
+          background-repeat: no-repeat; 
+          transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .cube-face-right {
+          background-color: rgba(255, 255, 0, 0.469);
+          transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .cube-face-top {
+          background-color: rgba(128, 0, 128, 0.527);
+          transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .cube-face-bottom {
+          background-color: rgba(255, 166, 0, 0.716);
+          transform: rotateX(-90deg) translateZ(100px);
+        }
+      </style>
+
+      <div class="scene2">
+        <div class="cube">
+          <div class="cube-face cube-face-front"></div>
+          <div class="cube-face cube-face-back"></div>
+          <div class="cube-face cube-face-left"></div>
+          <div class="cube-face cube-face-right"></div>
+          <div class="cube-face cube-face-top"></div>
+          <div class="cube-face cube-face-bottom"></div>
+        </div>
+    </div>
+
+    <style>
+        .webgl {
+            width: 100%;
+            height: 400px;
+            background-color: blanchedalmond;
+            position: relative;
+        }
+
+        canvas {
+            display: inline;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    <div>
+        <h2>WebGL</h2>
+        <div class="webgl">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui, delectus voluptatibus! Fugit id temporibus, quas animi natus perspiciatis ipsum? Quibusdam doloremque, excepturi corporis cumque natus rem quidem esse voluptatem sint
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus consectetur quia mollitia laudantium, repellat magni totam corrupti et dolores numquam id illum, vitae voluptates provident veritatis maiores molestias deserunt? Sit!
+        </div>
+    </div>
+
+    <div class="cool animation">
+        <h2>Spin 3D animation</h2>
+
+        <style>
+          .scene3 {
+            width: 200px;
+            height: 200px;
+            perspective: 600px;
+            border: 1px solid black;
+            margin: 50px auto;
+            position: relative;
+
+          }
+
+          .spin-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            animation: rotatecube 20s linear infinite;
+          }
+          
+        </style>
+        <div class=scene3>
+          <div class="spin-card">
+            <div class="left-turn"></div>
+            <div class="right-turn"></div>
+            <div class="top-turn"></div>
+            <div class="bottom-turn"></div>
+          </div>
+        </div>
+    </div>
+    <script>
+      let card = document.querySelector(".card");
+      card.addEventListener("click", () => {
+        card.classList.toggle("card-flipped");
+      });
+    </script>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
